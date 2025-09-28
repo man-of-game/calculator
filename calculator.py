@@ -31,9 +31,13 @@ root.geometry("450x550") #Set window size
 root.resizable(False, False) #Make window not resizable
 root.iconbitmap("calculator ico.ico")
 
+# frame for the entry field
+entry_frame = tk.Frame(root)
+entry_frame.grid(row=0, column=0, sticky='news')
+
 # frame to hold the widgets
 button_frame = tk.Frame(root)
-button_frame.pack()
+button_frame.grid(row=1, column=0, sticky='news')
 
 # ---configure the grid col and rows to have equal weight---
 # this makes all cells in the grid the same size
@@ -48,7 +52,7 @@ for i in range(5):
 # ---widgets---
 
 # entry field
-entry = tk.Entry(root, width=16, font=("arial", 24), borderwidth=2, justify="right")
+entry = tk.Entry(entry_frame, width=16, font=("arial", 24), borderwidth=2, justify="right")
 entry.grid(row=0, column=0, columnspan=4, padx=10, pady=20, ipady=10)
 
 #Define the button layout
@@ -83,7 +87,7 @@ for button_text in buttons:
         row_val+=1
 
 # create and place the 'Clear' button separately
-tk.Button(root, text='Clear', padx=79, pady=20, font=('Arial', 18), command=button_clear).grid(row=row_val, column=0, columnspan=2)
+tk.Button(button_frame, text='Clear', font=('Arial', 18), command=button_clear).grid(row=row_val, column=0, columnspan=2, sticky='news')
 
 # ---Start the GUI---
 
