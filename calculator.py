@@ -21,6 +21,13 @@ def button_equal():
         button_clear()
         entry.insert(0, "ERROR")
 
+def button_backspace():
+    #Deletes the last character in the entry field.
+    current_text = entry.get()
+    if current_text:
+        new_text = current_text[:-1] #Slice the string to remove the last character 
+        entry.delete(0, tk.END)
+        entry.insert(0, new_text)
 
 # ---Main window setup ---
 
@@ -43,10 +50,10 @@ button_frame.grid(row=1, column=0, sticky='news')
 # this makes all cells in the grid the same size
 
 for i in range(4):  #for 4 columns
-    button_frame.grid_columnconfigure(i, weight =1)
+    button_frame.grid_columnconfigure(i, weight =1, uniform='group1')
 
 for i in range(5):
-    button_frame.grid_rowconfigure(i, weight=1)
+    button_frame.grid_rowconfigure(i, weight=1,  uniform='group2')
 
 
 # ---widgets---
@@ -87,7 +94,10 @@ for button_text in buttons:
         row_val+=1
 
 # create and place the 'Clear' button separately
-tk.Button(button_frame, text='Clear', font=('Arial', 18), command=button_clear).grid(row=row_val, column=0, columnspan=2, sticky='news')
+tk.Button(button_frame, text='Clear', font=('Arial', 15), command=button_clear).grid(row=0, column=0, columnspan=2, sticky='news')
+
+# backspacce button
+tk.Button(button_frame, text="DEL", font=('Arial', 15), command=button_backspace).grid(row=0, column=2,  columnspan=2, sticky='news' )
 
 # ---Start the GUI---
 
