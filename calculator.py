@@ -19,7 +19,7 @@ def button_equal():
     except Exception as e:
         # If there's an error, show 'ERROR'
         button_clear()
-        entry.insert(0, "ERROR {e}")
+        entry.insert(0, "ERROR")
 
 
 # ---Main window setup ---
